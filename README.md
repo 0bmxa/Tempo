@@ -8,6 +8,8 @@ A simple iOS app which tells you the BPM of you tapping the screen. Usable for f
 - Tap with 2 fingers to reset
 - Dark screen so you can use it in the club
 
+![Screenshot](./.readme/screenshot.jpg)
+
 ## ToDo
 - Better averaging (maybe removing min/max?)
 - Only consider the last $timeframe (?)
