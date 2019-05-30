@@ -12,6 +12,7 @@
 		EE42548C1F702A6100DBF70E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE42548A1F702A6100DBF70E /* Main.storyboard */; };
 		EE42548E1F702A6100DBF70E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE42548D1F702A6100DBF70E /* Assets.xcassets */; };
 		EE4254911F702A6100DBF70E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE42548F1F702A6100DBF70E /* LaunchScreen.storyboard */; };
+		EE59612522A03E55003374B2 /* ManualTempoDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE59612422A03E55003374B2 /* ManualTempoDetector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		EE42548D1F702A6100DBF70E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE4254901F702A6100DBF70E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EE4254921F702A6100DBF70E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE59612422A03E55003374B2 /* ManualTempoDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualTempoDetector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				EE4254861F702A6100DBF70E /* AppDelegate.swift */,
 				EE4254881F702A6100DBF70E /* ViewController.swift */,
+				EE59612422A03E55003374B2 /* ManualTempoDetector.swift */,
 				EE42548A1F702A6100DBF70E /* Main.storyboard */,
 				EE42548D1F702A6100DBF70E /* Assets.xcassets */,
 				EE42548F1F702A6100DBF70E /* LaunchScreen.storyboard */,
@@ -137,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE4254891F702A6100DBF70E /* ViewController.swift in Sources */,
+				EE59612522A03E55003374B2 /* ManualTempoDetector.swift in Sources */,
 				EE4254871F702A6100DBF70E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
