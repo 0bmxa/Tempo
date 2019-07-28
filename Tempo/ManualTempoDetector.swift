@@ -12,48 +12,40 @@ class ManualTempoDetector {
     typealias TempoUpdateCallback = (Double?) -> Void
     internal var tempoUpdateCallback: TempoUpdateCallback?
     
-    private var lastBeat: TimeInterval?
-    private var intervals: [TimeInterval] = []
+    private var beats: [TimeInterval] = []
+    private let timeIntervalToConsider: TimeInterval
     
+    init(timeIntervalToConsider: TimeInterval = 4.0) {
+        self.timeIntervalToConsider = timeIntervalToConsider
+    }
+
     internal func addBeat() {
         let now = Date().timeIntervalSinceReferenceDate
+        self.beats.append(now)
         
-        if let lastBeat = self.lastBeat {
-            self.intervals.append(now - lastBeat)
-        }
-        self.lastBeat = now
+        // Filter beats by time
+        let relevantBeats = self.beats.filter { (now - $0) <= self.timeIntervalToConsider }
         
-        let timePerBeat: Double
-        
-        switch self.intervals.count {
-        case 0:
+        guard relevantBeats.count >= 2 else {
+            // In case there are no relevant beats -> reset
+            if self.beats.count >= 2 {
+                self.reset()
+            }
             return
-            
-        case 1..<3:  // Average
-            let sum = self.intervals.reduce(0) { $0 + $1 }
-            timePerBeat = sum / Double(self.intervals.count)
-            
-        case 3..<10:  // "Smoothed" average (w/o min/max)
-            let sum = self.intervals.reduce(0) { $0 + $1 }
-            let min = self.intervals.min() ?? 0
-            let max = self.intervals.max() ?? 0
-            timePerBeat = (sum - min - max) / Double(self.intervals.count - 2)
-            
-        default:  // "Smoothed" average of last 10 (w/o min/max -> 8) elements
-            let last10Intervals = self.intervals.dropFirst(self.intervals.count - 10)
-            let sum = last10Intervals.reduce(0) { $0 + $1 }
-            let min = last10Intervals.min() ?? 0
-            let max = last10Intervals.max() ?? 0
-            timePerBeat = (sum - min - max) / 8
         }
+
+        // Calculate avg time interval between beats
+        let totalDuration = relevantBeats.last! - relevantBeats.first!
+        let intervalCount = relevantBeats.count - 1
+        let timePerBeat = totalDuration / TimeInterval(intervalCount)
         
+        // To bpm
         let beatsPerMinute = 60.0 / timePerBeat
         self.tempoUpdateCallback?(beatsPerMinute)
     }
     
     internal func reset() {
-        self.lastBeat = nil
-        self.intervals.removeAll()
+        self.beats.removeAll()
         self.tempoUpdateCallback?(nil)
     }
 }
