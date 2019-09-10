@@ -53,6 +53,8 @@ class ViewController: UIViewController {
 
     func setTempoText(beatsPerMinute: Double?) {
         let bpm = beatsPerMinute ?? 0
+//        let precision = 5.0
+//        let rounded = (bpm/precision).rounded() * precision
         self.bpmLabel.text = String(format: "%.0f", bpm)
     }
     
