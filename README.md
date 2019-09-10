@@ -6,13 +6,13 @@ A simple iOS app which tells you the BPM of you tapping the screen. Usable for f
 ## Features
 - Tap repeatedy (with 1 finger) to get the BPM
 - Tap with 2 fingers to reset
-- Dark screen so you can use it in the club
+- Dark screen so you can use it in da club™
 
 ![Screenshot](./.readme/screenshot.jpg)
 
 ## ToDo
-- Better averaging (maybe removing min/max?)
-- Only consider the last $timeframe (?)
+- [x] Better averaging (maybe removing min/max?)
+- [x] Only consider the last ~$timeframe~ 3 seconds
 
 ## Fancy Future™ ToDo
-- Use the mic and some BPM detection library. Maybe.
+- [ ] Use the mic and some BPM detection library. Maybe.
