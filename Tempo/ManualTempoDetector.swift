@@ -8,7 +8,12 @@
 
 import Foundation
 
-class ManualTempoDetector {
+protocol TempoDetectorType {
+    typealias TempoUpdateCallback = (Double?) -> Void
+    var tempoUpdateCallback: TempoUpdateCallback? { get set }
+}
+
+class ManualTempoDetector: TempoDetectorType {
     typealias TempoUpdateCallback = (Double?) -> Void
     internal var tempoUpdateCallback: TempoUpdateCallback?
     

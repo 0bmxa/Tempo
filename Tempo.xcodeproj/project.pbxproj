@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE2BEDE3232AAB6400CA3FD2 /* aubio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2BEDE2232AAB6400CA3FD2 /* aubio.framework */; };
 		EE4254871F702A6100DBF70E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4254861F702A6100DBF70E /* AppDelegate.swift */; };
 		EE4254891F702A6100DBF70E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4254881F702A6100DBF70E /* ViewController.swift */; };
 		EE42548C1F702A6100DBF70E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE42548A1F702A6100DBF70E /* Main.storyboard */; };
 		EE42548E1F702A6100DBF70E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE42548D1F702A6100DBF70E /* Assets.xcassets */; };
 		EE4254911F702A6100DBF70E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE42548F1F702A6100DBF70E /* LaunchScreen.storyboard */; };
 		EE59612522A03E55003374B2 /* ManualTempoDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE59612422A03E55003374B2 /* ManualTempoDetector.swift */; };
+		EE6C17AA23280EBC00542DD3 /* MicrophoneTempoDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6C17A923280EBC00542DD3 /* MicrophoneTempoDetector.swift */; };
+		EE6C17CA2329744400542DD3 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6C17C92329744400542DD3 /* Accelerate.framework */; };
+		EE6C17CC2329746E00542DD3 /* Aubio.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6C17CB2329746E00542DD3 /* Aubio.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EE2BEDE2232AAB6400CA3FD2 /* aubio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = aubio.framework; path = Frameworks/aubio.framework; sourceTree = "<group>"; };
 		EE4254831F702A6100DBF70E /* Tempo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tempo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE4254861F702A6100DBF70E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE4254881F702A6100DBF70E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +29,9 @@
 		EE4254901F702A6100DBF70E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EE4254921F702A6100DBF70E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EE59612422A03E55003374B2 /* ManualTempoDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualTempoDetector.swift; sourceTree = "<group>"; };
+		EE6C17A923280EBC00542DD3 /* MicrophoneTempoDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrophoneTempoDetector.swift; sourceTree = "<group>"; };
+		EE6C17C92329744400542DD3 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		EE6C17CB2329746E00542DD3 /* Aubio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aubio.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +39,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE6C17CA2329744400542DD3 /* Accelerate.framework in Frameworks */,
+				EE2BEDE3232AAB6400CA3FD2 /* aubio.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +51,7 @@
 			isa = PBXGroup;
 			children = (
 				EE4254851F702A6100DBF70E /* Tempo */,
+				EE6C17AB2328240000542DD3 /* Frameworks */,
 				EE4254841F702A6100DBF70E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -59,12 +70,23 @@
 				EE4254861F702A6100DBF70E /* AppDelegate.swift */,
 				EE4254881F702A6100DBF70E /* ViewController.swift */,
 				EE59612422A03E55003374B2 /* ManualTempoDetector.swift */,
+				EE6C17A923280EBC00542DD3 /* MicrophoneTempoDetector.swift */,
+				EE6C17CB2329746E00542DD3 /* Aubio.swift */,
 				EE42548A1F702A6100DBF70E /* Main.storyboard */,
 				EE42548D1F702A6100DBF70E /* Assets.xcassets */,
 				EE42548F1F702A6100DBF70E /* LaunchScreen.storyboard */,
 				EE4254921F702A6100DBF70E /* Info.plist */,
 			);
 			path = Tempo;
+			sourceTree = "<group>";
+		};
+		EE6C17AB2328240000542DD3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EE2BEDE2232AAB6400CA3FD2 /* aubio.framework */,
+				EE6C17C92329744400542DD3 /* Accelerate.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,9 +161,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE6C17CC2329746E00542DD3 /* Aubio.swift in Sources */,
 				EE4254891F702A6100DBF70E /* ViewController.swift in Sources */,
 				EE59612522A03E55003374B2 /* ManualTempoDetector.swift in Sources */,
 				EE4254871F702A6100DBF70E /* AppDelegate.swift in Sources */,
+				EE6C17AA23280EBC00542DD3 /* MicrophoneTempoDetector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +305,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JGMFM42JM6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = Tempo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0bmxa.Tempo;
@@ -298,6 +326,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = JGMFM42JM6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				INFOPLIST_FILE = Tempo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.0bmxa.Tempo;
