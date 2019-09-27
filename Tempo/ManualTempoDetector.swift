@@ -9,13 +9,16 @@
 import Foundation
 
 protocol TempoDetectorType {
-    typealias TempoUpdateCallback = (Double?) -> Void
+    associatedtype TempoUpdateCallback
+    typealias BeatOccurenceCallback = () -> Void
     var tempoUpdateCallback: TempoUpdateCallback? { get set }
+    var beatOccurenceCallback: BeatOccurenceCallback? { get set }
 }
 
 class ManualTempoDetector: TempoDetectorType {
-    typealias TempoUpdateCallback = (Double?) -> Void
+    typealias TempoUpdateCallback = (Float?) -> Void
     internal var tempoUpdateCallback: TempoUpdateCallback?
+    internal var beatOccurenceCallback: BeatOccurenceCallback?
     
     private var beats: [TimeInterval] = []
     private let timeIntervalToConsider: TimeInterval
@@ -55,7 +58,7 @@ class ManualTempoDetector: TempoDetectorType {
         
         
         // To bpm
-        let beatsPerMinute = 60.0 / timePerBeat
+        let beatsPerMinute = 60.0 / Float(timePerBeat)
         self.tempoUpdateCallback?(beatsPerMinute)
     }
     

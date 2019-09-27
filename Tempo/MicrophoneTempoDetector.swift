@@ -7,57 +7,93 @@
 //
 
 import AVFoundation
+import Foundation
 
 class MicrophoneTempoDetector: TempoDetectorType {
-    var tempoUpdateCallback: TempoUpdateCallback?
+    typealias TempoUpdateCallback = (Aubio.BPM) -> Void
     
-    let session = AVAudioSession.sharedInstance()
-    let engine = AVAudioEngine()
+    var tempoUpdateCallback: TempoUpdateCallback?
+    var beatOccurenceCallback: BeatOccurenceCallback?
+    
+    private let session = AVAudioSession.sharedInstance()
+    private let engine = AVAudioEngine()
     
     // Aubio stuff
-    let aubioDetector: Aubio.Tempo
-    let buffer: Aubio.Vector
+    internal let aubioTempo: Aubio.Tempo
+    private let buffer: Aubio.Vector
+    
+    // "Audio Settings"
+    private let inputBus: AVAudioNodeBus = 0
+    private let bufferSize: AVAudioFrameCount = 2048
+    
+    private var tapInstalled: Bool = false
     
     init() {
-        let inputNode = self.engine.inputNode
-        let inputBus: AVAudioNodeBus = 0
-        let bufferSize: AVAudioFrameCount = 2048
-        let format = inputNode.inputFormat(forBus: inputBus)
-        
+        // Create tempo detector
+        let format = self.engine.inputNode.inputFormat(forBus: self.inputBus)
         guard format.sampleRate != 0 else { fatalError() }
         
-        // Create tempo detector
-        self.aubioDetector = Aubio.Tempo(bufferSize: bufferSize, sampleRate: UInt32(format.sampleRate))
+        self.aubioTempo = Aubio.Tempo(bufferSize: bufferSize, sampleRate: UInt32(format.sampleRate))
         self.buffer = Aubio.Vector(length: bufferSize)
+    }
+    
+    internal func checkPermissions(callback: @escaping (Bool) -> Void) {
+        self.session.requestRecordPermission(callback)
+    }
+    
+    internal func start() -> Bool {
+        self.installTap()
+        do {
+            try self.engine.start()
+        } catch {
+            print(error)
+            assertionFailure()
+            return false
+        }
+        return true
+    }
+    
+    internal func stop() {
+        self.engine.stop()
+        self.engine.inputNode.removeTap(onBus: self.inputBus)
+    }
+}
+
+
+private extension MicrophoneTempoDetector {
+    func installTap() {
+        guard !self.tapInstalled else { return }
+        let inputNode = self.engine.inputNode
+        let format = inputNode.inputFormat(forBus: self.inputBus)
+        guard format.sampleRate != 0 else { fatalError() }
 
         // Setup Tap on input node
         inputNode.installTap(onBus: inputBus, bufferSize: bufferSize, format: format, block: self.inputCallback)
-        
-        start()
+        self.tapInstalled = true
     }
     
-    func start() {
-        try! self.engine.start()
-    }
     
     /// The callback for the input node tap.
     ///
     /// - Parameter buffer: A buffer of audio captured from the output of an AVAudioNode
     /// - Parameter when: The time at which the buffer was captured
-    private func inputCallback(buffer: AVAudioPCMBuffer, when: AVAudioTime) {
+    func inputCallback(buffer: AVAudioPCMBuffer, when: AVAudioTime) {
         guard buffer.stride == 1 else { fatalError("ERROR: Format is interleaved") }
-        guard let floatBuffer = buffer.floatChannelData?[0] else { fatalError("ERROR: Format is not floar") }
+        guard let floatBuffer = buffer.floatChannelData?[0] else { fatalError("ERROR: Format is not float") }
         
-//        let sampleCount = buffer.frameLength
-//        
-//        let bufferPointer = UnsafeBufferPointer(start: floatBuffer, count: Int(buffer.frameLength))
-//        let count = Int(bufferPointer.max()! * 10)
-//        print(String(repeating: " ", count: count), "|")
-        
-        self.aubioDetector.detect(buffer: floatBuffer) {
-            print("Now")
-        }
-        
+        let sampleCount = Int(buffer.frameLength)        
+        self.aubioTempo.detect(buffer: floatBuffer, size: sampleCount, updateCallback: self.updateUI)
     }
     
+    private func updateUI(bpm: Aubio.BPM, isBeat: Bool) {
+        DispatchQueue.main.async {
+
+//            print("BPM:", bpm, "is beat:", isBeat)
+            self.tempoUpdateCallback?(bpm)
+            if isBeat {
+                self.beatOccurenceCallback?()
+            }
+
+        }
+    }
 }

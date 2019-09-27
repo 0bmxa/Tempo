@@ -7,20 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EE2BEDE3232AAB6400CA3FD2 /* aubio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2BEDE2232AAB6400CA3FD2 /* aubio.framework */; };
 		EE4254871F702A6100DBF70E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4254861F702A6100DBF70E /* AppDelegate.swift */; };
 		EE4254891F702A6100DBF70E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4254881F702A6100DBF70E /* ViewController.swift */; };
 		EE42548C1F702A6100DBF70E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE42548A1F702A6100DBF70E /* Main.storyboard */; };
 		EE42548E1F702A6100DBF70E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE42548D1F702A6100DBF70E /* Assets.xcassets */; };
 		EE4254911F702A6100DBF70E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EE42548F1F702A6100DBF70E /* LaunchScreen.storyboard */; };
+		EE42D233232BDC230064F921 /* aubio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE42D232232BDC230064F921 /* aubio.framework */; };
+		EE4BD8D0232FD06800BE38BE /* TempoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE4BD8CF232FD06800BE38BE /* TempoTests.swift */; };
+		EE4BD8D823315C6D00BE38BE /* test_beat.wav in Resources */ = {isa = PBXBuildFile; fileRef = EE4BD8D723315C6D00BE38BE /* test_beat.wav */; };
 		EE59612522A03E55003374B2 /* ManualTempoDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE59612422A03E55003374B2 /* ManualTempoDetector.swift */; };
 		EE6C17AA23280EBC00542DD3 /* MicrophoneTempoDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6C17A923280EBC00542DD3 /* MicrophoneTempoDetector.swift */; };
 		EE6C17CA2329744400542DD3 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6C17C92329744400542DD3 /* Accelerate.framework */; };
-		EE6C17CC2329746E00542DD3 /* Aubio.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6C17CB2329746E00542DD3 /* Aubio.swift */; };
+		EE6C17CC2329746E00542DD3 /* Tempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE6C17CB2329746E00542DD3 /* Tempo.swift */; };
+		EEE66B3F233E598600F8B957 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE66B3E233E598600F8B957 /* Vector.swift */; };
+		EEE66B41233E59B200F8B957 /* Aubio.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE66B40233E59B200F8B957 /* Aubio.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		EE4BD8D2232FD06800BE38BE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EE42547B1F702A6100DBF70E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EE4254821F702A6100DBF70E;
+			remoteInfo = Tempo;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		EE2BEDE2232AAB6400CA3FD2 /* aubio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = aubio.framework; path = Frameworks/aubio.framework; sourceTree = "<group>"; };
 		EE4254831F702A6100DBF70E /* Tempo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tempo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE4254861F702A6100DBF70E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EE4254881F702A6100DBF70E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -28,10 +41,17 @@
 		EE42548D1F702A6100DBF70E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE4254901F702A6100DBF70E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EE4254921F702A6100DBF70E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE42D232232BDC230064F921 /* aubio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = aubio.framework; path = Frameworks/aubio.framework; sourceTree = "<group>"; };
+		EE4BD8CD232FD06800BE38BE /* TempoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TempoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE4BD8CF232FD06800BE38BE /* TempoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempoTests.swift; sourceTree = "<group>"; };
+		EE4BD8D1232FD06800BE38BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EE4BD8D723315C6D00BE38BE /* test_beat.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = test_beat.wav; sourceTree = "<group>"; };
 		EE59612422A03E55003374B2 /* ManualTempoDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualTempoDetector.swift; sourceTree = "<group>"; };
 		EE6C17A923280EBC00542DD3 /* MicrophoneTempoDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrophoneTempoDetector.swift; sourceTree = "<group>"; };
 		EE6C17C92329744400542DD3 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		EE6C17CB2329746E00542DD3 /* Aubio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aubio.swift; sourceTree = "<group>"; };
+		EE6C17CB2329746E00542DD3 /* Tempo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tempo.swift; sourceTree = "<group>"; };
+		EEE66B3E233E598600F8B957 /* Vector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
+		EEE66B40233E59B200F8B957 /* Aubio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aubio.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,7 +60,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE6C17CA2329744400542DD3 /* Accelerate.framework in Frameworks */,
-				EE2BEDE3232AAB6400CA3FD2 /* aubio.framework in Frameworks */,
+				EE42D233232BDC230064F921 /* aubio.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE4BD8CA232FD06800BE38BE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				EE4254851F702A6100DBF70E /* Tempo */,
+				EE4BD8CE232FD06800BE38BE /* TempoTests */,
 				EE6C17AB2328240000542DD3 /* Frameworks */,
 				EE4254841F702A6100DBF70E /* Products */,
 			);
@@ -60,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				EE4254831F702A6100DBF70E /* Tempo.app */,
+				EE4BD8CD232FD06800BE38BE /* TempoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -69,10 +98,10 @@
 			children = (
 				EE4254861F702A6100DBF70E /* AppDelegate.swift */,
 				EE4254881F702A6100DBF70E /* ViewController.swift */,
+				EE42548A1F702A6100DBF70E /* Main.storyboard */,
 				EE59612422A03E55003374B2 /* ManualTempoDetector.swift */,
 				EE6C17A923280EBC00542DD3 /* MicrophoneTempoDetector.swift */,
-				EE6C17CB2329746E00542DD3 /* Aubio.swift */,
-				EE42548A1F702A6100DBF70E /* Main.storyboard */,
+				EEE66B3D233E597100F8B957 /* Aubio */,
 				EE42548D1F702A6100DBF70E /* Assets.xcassets */,
 				EE42548F1F702A6100DBF70E /* LaunchScreen.storyboard */,
 				EE4254921F702A6100DBF70E /* Info.plist */,
@@ -80,13 +109,33 @@
 			path = Tempo;
 			sourceTree = "<group>";
 		};
+		EE4BD8CE232FD06800BE38BE /* TempoTests */ = {
+			isa = PBXGroup;
+			children = (
+				EE4BD8CF232FD06800BE38BE /* TempoTests.swift */,
+				EE4BD8D723315C6D00BE38BE /* test_beat.wav */,
+				EE4BD8D1232FD06800BE38BE /* Info.plist */,
+			);
+			path = TempoTests;
+			sourceTree = "<group>";
+		};
 		EE6C17AB2328240000542DD3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EE2BEDE2232AAB6400CA3FD2 /* aubio.framework */,
+				EE42D232232BDC230064F921 /* aubio.framework */,
 				EE6C17C92329744400542DD3 /* Accelerate.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EEE66B3D233E597100F8B957 /* Aubio */ = {
+			isa = PBXGroup;
+			children = (
+				EEE66B40233E59B200F8B957 /* Aubio.swift */,
+				EE6C17CB2329746E00542DD3 /* Tempo.swift */,
+				EEE66B3E233E598600F8B957 /* Vector.swift */,
+			);
+			path = Aubio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -109,19 +158,42 @@
 			productReference = EE4254831F702A6100DBF70E /* Tempo.app */;
 			productType = "com.apple.product-type.application";
 		};
+		EE4BD8CC232FD06800BE38BE /* TempoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE4BD8D6232FD06800BE38BE /* Build configuration list for PBXNativeTarget "TempoTests" */;
+			buildPhases = (
+				EE4BD8C9232FD06800BE38BE /* Sources */,
+				EE4BD8CA232FD06800BE38BE /* Frameworks */,
+				EE4BD8CB232FD06800BE38BE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EE4BD8D3232FD06800BE38BE /* PBXTargetDependency */,
+			);
+			name = TempoTests;
+			productName = TempoTests;
+			productReference = EE4BD8CD232FD06800BE38BE /* TempoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		EE42547B1F702A6100DBF70E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0900;
+				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = mxa;
 				TargetAttributes = {
 					EE4254821F702A6100DBF70E = {
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Automatic;
+					};
+					EE4BD8CC232FD06800BE38BE = {
+						CreatedOnToolsVersion = 11.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = EE4254821F702A6100DBF70E;
 					};
 				};
 			};
@@ -139,6 +211,7 @@
 			projectRoot = "";
 			targets = (
 				EE4254821F702A6100DBF70E /* Tempo */,
+				EE4BD8CC232FD06800BE38BE /* TempoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -154,6 +227,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EE4BD8CB232FD06800BE38BE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE4BD8D823315C6D00BE38BE /* test_beat.wav in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -161,15 +242,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE6C17CC2329746E00542DD3 /* Aubio.swift in Sources */,
+				EE6C17CC2329746E00542DD3 /* Tempo.swift in Sources */,
 				EE4254891F702A6100DBF70E /* ViewController.swift in Sources */,
 				EE59612522A03E55003374B2 /* ManualTempoDetector.swift in Sources */,
+				EEE66B41233E59B200F8B957 /* Aubio.swift in Sources */,
 				EE4254871F702A6100DBF70E /* AppDelegate.swift in Sources */,
+				EEE66B3F233E598600F8B957 /* Vector.swift in Sources */,
 				EE6C17AA23280EBC00542DD3 /* MicrophoneTempoDetector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EE4BD8C9232FD06800BE38BE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE4BD8D0232FD06800BE38BE /* TempoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EE4BD8D3232FD06800BE38BE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EE4254821F702A6100DBF70E /* Tempo */;
+			targetProxy = EE4BD8D2232FD06800BE38BE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		EE42548A1F702A6100DBF70E /* Main.storyboard */ = {
@@ -340,6 +439,49 @@
 			};
 			name = Release;
 		};
+		EE4BD8D4232FD06800BE38BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JGMFM42JM6;
+				INFOPLIST_FILE = TempoTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.0bmxa.Tempo.Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tempo.app/Tempo";
+			};
+			name = Debug;
+		};
+		EE4BD8D5232FD06800BE38BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JGMFM42JM6;
+				INFOPLIST_FILE = TempoTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.0bmxa.Tempo.Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tempo.app/Tempo";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -357,6 +499,15 @@
 			buildConfigurations = (
 				EE4254961F702A6100DBF70E /* Debug */,
 				EE4254971F702A6100DBF70E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE4BD8D6232FD06800BE38BE /* Build configuration list for PBXNativeTarget "TempoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE4BD8D4232FD06800BE38BE /* Debug */,
+				EE4BD8D5232FD06800BE38BE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
