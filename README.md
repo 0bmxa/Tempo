@@ -1,7 +1,8 @@
 Tempo
 =====
 
-A simple iOS app which tells you the BPM of you tapping the screen. Usable for finding out the tempo of some music.
+A simple iOS app which tells you the BPM of you tapping the screen. Usable for
+finding out the tempo of some music.
 
 ## Features
 - Tap repeatedy (with 1 finger) to get the BPM
@@ -13,6 +14,5 @@ A simple iOS app which tells you the BPM of you tapping the screen. Usable for f
 ## ToDo
 - [x] Better averaging (maybe removing min/max?)
 - [x] Only consider the last ~$timeframe~ 3 seconds
-
-## Fancy Future™ ToDo
-- [ ] Use the mic and some BPM detection library. Maybe.
+- [ ] Use the mic and some BPM detection library. ~Maybe.~ WIP: See
+[audio](https://github.com/0bmxa/Tempo/tree/audio) branch.
