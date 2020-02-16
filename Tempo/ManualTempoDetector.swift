@@ -14,7 +14,11 @@ class ManualTempoDetector {
     
     private var beats: [TimeInterval] = []
     private let timeIntervalToConsider: TimeInterval
+    private var lastBPM: Double?
     
+    private let smoothingFactor = 0.9 // 0 = no smoothing; 1 = no update
+    private let significantChange = 10.0 // bpm
+
     init(timeIntervalToConsider: TimeInterval = 3.0) {
         self.timeIntervalToConsider = timeIntervalToConsider
     }
@@ -24,38 +28,45 @@ class ManualTempoDetector {
         self.beats.append(now)
         
         // Filter beats by time
-        let relevantBeats = self.beats.filter { (now - $0) <= self.timeIntervalToConsider }
+        self.beats = self.beats.filter {
+            (now - $0) <= self.timeIntervalToConsider
+        }
         
-        guard relevantBeats.count >= 2 else {
-            // In case there are no relevant beats, but other beats -> reset
-            if self.beats.count >= 2 {
-                self.reset()
-            }
+        // Require at least 2 beats in the time interval
+        guard beats.count >= 2 else {
+            self.lastBPM = nil
+            self.tempoUpdateCallback?(nil)
             return
         }
 
         // Calculate avg time interval between beats
-        let totalDuration = relevantBeats.last! - relevantBeats.first!
-        let intervalCount = relevantBeats.count - 1
+        let totalDuration = self.beats.last! - self.beats.first!
+        let intervalCount = self.beats.count - 1
         let timePerBeat = totalDuration / TimeInterval(intervalCount)
-        
-//        // Median
-//        var intervals: [TimeInterval] = []
-//        for i in 0..<relevantBeats.count-1 {
-//            intervals.append(relevantBeats[i+1] - relevantBeats[i])
-//        }
-//        intervals.sort()
-//        let medianIntervalIndex = intervals.count / 2
-//        let timePerBeat = intervals[medianIntervalIndex]
-        
-        
-        // To bpm
-        let beatsPerMinute = 60.0 / timePerBeat
+
+        // To bpm, smoothed
+        let beatsPerMinute = self.smooth(bpm: 60.0 / timePerBeat)
+
         self.tempoUpdateCallback?(beatsPerMinute)
+        self.lastBPM = beatsPerMinute
+    }
+    
+    private func smooth(bpm: Double) -> Double {
+        guard let lastBPM = self.lastBPM else { return bpm }
+
+        // Don't smooth if change from last BPM is significant
+        guard abs(bpm - lastBPM) <= self.significantChange else {
+            self.lastBPM = nil
+            return bpm
+        }
+
+        // Cheap low pass smoothing
+        return smoothingFactor * lastBPM + (1 - smoothingFactor) * bpm
     }
     
     internal func reset() {
         self.beats.removeAll()
+        self.lastBPM = nil
         self.tempoUpdateCallback?(nil)
     }
 }
