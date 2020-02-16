@@ -14,7 +14,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var infoLabel: UILabel!
     
     private let tempoDetector = ManualTempoDetector()
-    
+    private var previousTouch: TimeInterval = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,13 +35,20 @@ class ViewController: UIViewController {
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if touches.count == 1 {
-            // Regular tempo tap (single finger on touch down)
-            self.viewTapped()
-        } else if touches.count == 2 {
-            // Reset tap (two fingers)
-            self.viewDoubleTapped()
+        let now = Date().timeIntervalSinceReferenceDate
+
+        // Tap with 2+ fingers
+        // Note: If the last two taps are less than 0.2 seconds apart,
+        // we're either trying to detect 300+ bpm or we missed a two finger tap
+        if touches.count >= 2 || now - previousTouch < 0.2 {
+            self.twoFingersTapped()
+            self.previousTouch = 0
+            return
         }
+
+        // Regular tempo tap (single finger on touch down)
+        self.viewTapped()
+        self.previousTouch = now
     }
 
     @objc func viewTapped() {
@@ -48,15 +56,13 @@ class ViewController: UIViewController {
         self.hideInfoLabel()
     }
     
-    @objc func viewDoubleTapped() {
+    @objc func twoFingersTapped() {
         self.tempoDetector.reset()
         self.hideInfoLabel()
      }
 
     func setTempoText(beatsPerMinute: Double?) {
         let bpm = beatsPerMinute ?? 0
-//        let precision = 5.0
-//        let rounded = (bpm/precision).rounded() * precision
         self.bpmLabel.text = String(format: "%.0f", bpm)
     }
     

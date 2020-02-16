@@ -43,8 +43,8 @@ class ManualTempoDetector {
         let totalDuration = self.beats.last! - self.beats.first!
         let intervalCount = self.beats.count - 1
         let timePerBeat = totalDuration / TimeInterval(intervalCount)
-
-        // To bpm, smoothed
+        
+        // To BPM, smoothed
         let beatsPerMinute = self.smooth(bpm: 60.0 / timePerBeat)
 
         self.tempoUpdateCallback?(beatsPerMinute)
