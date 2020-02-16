@@ -12,8 +12,6 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var bpmLabel: UILabel!
     @IBOutlet weak var infoLabel: UILabel!
-    let tapRecognizer = UITapGestureRecognizer()
-    let doubleTapRecognizer = UITapGestureRecognizer()
     
     private let tempoDetector = ManualTempoDetector()
     
@@ -27,20 +25,24 @@ class ViewController: UIViewController {
         self.showInfoLabel(after: 3.0)
         
         self.tempoDetector.tempoUpdateCallback = self.setTempoText
-
-        // Tempo (single tap) recognizer
-        self.tapRecognizer.numberOfTapsRequired    = 1
-        self.tapRecognizer.numberOfTouchesRequired = 1
-        self.view.addGestureRecognizer(self.tapRecognizer)
-        self.tapRecognizer.addTarget(self, action: #selector(self.viewTapped))
-
-        // Reset (double tap) recognizer
-        self.doubleTapRecognizer.numberOfTapsRequired    = 1
-        self.doubleTapRecognizer.numberOfTouchesRequired = 2
-        self.view.addGestureRecognizer(self.doubleTapRecognizer)
-        self.doubleTapRecognizer.addTarget(self, action: #selector(self.viewDoubleTapped))
+        
+        // Allow touch detection on main view
+        self.view.isUserInteractionEnabled = true
+        self.view.isMultipleTouchEnabled = true
+        self.bpmLabel.isUserInteractionEnabled = false
+        self.infoLabel.isUserInteractionEnabled = false
     }
-    
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if touches.count == 1 {
+            // Regular tempo tap (single finger on touch down)
+            self.viewTapped()
+        } else if touches.count == 2 {
+            // Reset tap (two fingers)
+            self.viewDoubleTapped()
+        }
+    }
+
     @objc func viewTapped() {
         self.tempoDetector.addBeat()
         self.hideInfoLabel()
